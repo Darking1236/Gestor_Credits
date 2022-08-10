@@ -1,0 +1,203 @@
+<div class="container mt-4 p-4 bg-success text-white">   
+    <form  class="row g-3" >
+        <label for="">I. Información personal de la empresa</label>
+        <div class="col-12">
+            <label for="">Razón social:</label>
+            <input type="text" name="score" class="form-control"   required>
+        </div>
+        
+        <div class="col-6">
+            <label for="">RFC:</label>
+            <input type="text" name="score" class="form-control"   required>
+        </div>
+
+        <div class="col-6">
+            <label for="">Giro de la empresa:</label>
+            <input type="text" name="score" class="form-control"   required>
+        </div>
+
+        <label for="">II. Buro de crédito</label>
+        <div class="col-4">
+            <label for="">Score:</label>
+            <input type="text" name="score" class="form-control"   required>
+        </div>
+
+        <div class="col-4">
+            <label for="">No. de Cuentas abiertas:</label>
+            <input type="text" name="No_openAccounts" class="form-control"  required>
+        </div>
+        
+        <div class="col-4">
+            <label for="">Total de deudas mensuales</label>
+            <input type="text" name="total_monthlyDebts" class="form-control"required>
+        </div>
+        
+        <div class="col-12">
+            <label for="">Pagos mensuales:</label>
+            <input type="text" name="monthly_payments" class="form-control"  required>
+        </div>
+        <div class="col-6">
+            <label for="">Precalificación de empresa:</label>
+            <select name="custumer_prequalification" id="" class="form-control" >
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+        </div>
+        <div class="col-6">
+            <label for="">Precalificación del aval:</label>
+            <select name="custumer_prequalification" id="" class="form-control" >
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+        </div>
+
+        <label for="">III. Información Financiera</label>
+        <label for="">Considerar estos datos en la solicitud de P.F. C/ACTIVIDAD EMPRESARIAL</label>
+
+        <div class="form-group col-md-6">
+
+            <div class="">
+                <label for="">Activos Totales:</label>
+                <input type="text" name="monthly_netIncome" class="form-control"  required>
+            </div>
+            
+            <div class="">
+                <label for="">Activo Circulante:</label>
+                <input type="text" name="additional_activity" class="form-control"  required>
+            </div>
+            
+            <div class="">
+                <label for="">Inventario:</label>
+                <input type="text" name="bonds" class="form-control"  required>
+            </div>
+            
+
+            <div class="">
+                <label for="">Pasivos Totales:</label>
+                <input type="text" name="other" class="form-control"   required>
+            </div>
+            
+            <div class="">
+                <label for="">Pasivo Circulante:</label>
+                <input type="text" name="spouse_income" class="form-control"  required>
+            </div>
+        </div>
+        
+
+        <div class="form-group col-md-6">
+            <div class="">
+                <label for="">Capital Contable:</label>
+                <input type="text" name="house_rent" class="form-control" required>
+            </div>
+    
+            <div class="">
+                <label for="">Ventas:</label>
+                <input type="text" name="feeding" class="form-control"    required>
+            </div>
+    
+            <div class="">
+                <label for="">Utilidad:</label>
+                <input type="text" name="gasoline" class="form-control"  required>
+            </div>
+    
+            <div class="">
+                <label for="">Intereses por pagar:</label>
+                <input type="text" name="services" class="form-control"  required>
+            </div>
+    
+            <div class="">
+                <label for="">Interes anual Finbaja:</label>
+                <input type="text" name="Other" class="form-control"   required>
+            </div>
+        </div>
+        
+        
+            <label for="">IV. Información del Financiamiento</label>
+
+            <div class="col-4">
+                <label for="">Marca:</label>
+                <select name="brand" id="" class="form-control" >
+                    <option value="Otros">Otros</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Camiones Usados">Camiones Usados</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Ford">Ford</option>
+                    <option value="GMC">GMC</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Mercedes Benz">Mercedes Benz</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                </select>
+            </div>
+            
+            <div class="col-4">
+                <label for="">Modelo:</label>
+                <input type="text" name="model" class="form-control"  required>
+            </div>
+    
+            <div class="col-4">
+                <label for="">Enganche:</label>
+                <input type="text" name="hitch" class="form-control"  required>
+            </div>
+    
+            <div class="col-4">
+                <label for="">Precio:</label>
+                <input type="text" name="price" class="form-control" readonly="readonly" required>
+            </div>
+    
+            <div class="col-4">
+                <label for="">Financiamiento:</label>
+                <input type="text" name="financing" class="form-control" readonly="readonly" required>
+            </div>
+    
+            <div class="col-4">
+                <label for="">Mensualidad:</label>
+                <input type="text" name="mounthly_payment" class="form-control"  required>
+            </div>
+    
+            <div class="col-4">
+                <label for="">Valor Factura:</label>
+                <input type="text" name="invoice_value" class="form-control"  required>
+            </div>
+            
+            <div class="col-4">
+                <label for="">Monto Financiar Total:</label>
+                <input type="text" name="total_financingAmount" class="form-control" required>
+            </div>
+
+            <div class="col-4 ">
+                <label for="">Plazo Meses:</label>
+                <input type="text" name="termM" class="form-control" required>
+            </div>
+
+            <div class="d-grid gap-2 col-3">
+                <button id="btnSave" class=" btn btn-primary">Guardar</button>
+            </div>
+            <div class="d-grid gap-2 col-3">
+                <button class=" btn btn-danger" >ver resultado</button>
+            </div>
+            <div class="d-grid gap-2 col-3">
+                <button class=" btn btn-danger">Exportar</button>
+            </div>
+            <div class="d-grid gap-2 col-3">
+                <button class=" btn btn-warning ">Limpiar</button>
+            </div>
+        
+    </form>
+</div>
+

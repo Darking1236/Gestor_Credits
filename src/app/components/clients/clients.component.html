@@ -1,0 +1,28 @@
+
+<div class="container mt-5">
+    <a routerLink="/addClients" class="btn btn-warning mb-3 mx-auto">Agregar</a>
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estatus</th>
+                    <th scope="col">Persona</th>
+                    <th scope="col">Fecha de creacion</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clientsServices.clients">
+                    <td>{{client.name}}</td>
+                    <td>{{client.status}}</td>
+                    <td>{{client.person}}</td>
+                    <td>{{client.createdAt}}</td>
+                    <td>
+                        <button class="btn btn-success me-2" (click)="analysisClient(client._id,client)">Analizar</button>
+                        <button class="btn btn-primary me-2" (click)="editClients(client)">Editar</button>
+                        <button class="btn btn-danger" (click)="deleteClients(client._id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

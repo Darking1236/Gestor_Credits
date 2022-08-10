@@ -1,0 +1,51 @@
+<div class=" p-2 ">
+    <h1 mat-dialog-title>RESULTADO DEL CREDITO</h1>
+    <mat-dialog-content>
+        <table class="table table-success table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Detalles</th>
+                    <th scope="col">Caracteristicas</th>
+                    <th scope="col">Puntaje</th>
+                    <th scope="col">Riesgo de garantía <br>Monto del Enganche</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Calificación del cliente(BC)</th>
+                    <td>{{data.precalificacion}}</td>
+                    <td>{{data.calificacion_bc}}</td>
+                    <td>{{data.enganche}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Aforo Neto</th>
+                    <td>{{data.aforo_neto}}</td>
+                    <td>...</td>
+                    <td>Condicion</td>
+                </tr>
+                <tr>
+                    <th scope="row">Capacidad de pago</th>
+                    <td>{{data.capacidad_de_pago}} a 1</td>
+                    <td>{{data.capacidad_de_pagoScore}}</td>
+                    <td>3 A 1</td>
+                    <td>OTROS MODELOS</td>
+                </tr>
+                <tr>
+                    <th scope="row">Antiguedad laboral</th>
+                    <td>...</td>
+                    <td>{{data.antiguedad_laboralScore}}</td>
+                    <td>2 A 1</td>
+                </tr>
+                <tr>
+                    <th scope="row">Suma de puntos</th>
+                    <td>...</td>
+                    <td>{{data.suma_puntos}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button class=" btn btn-danger m-2" (click)="onNoClick()"> Cerrar </button>
+    </mat-dialog-actions>
+</div>

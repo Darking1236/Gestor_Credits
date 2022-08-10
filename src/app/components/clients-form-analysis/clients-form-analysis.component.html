@@ -1,0 +1,604 @@
+<div class="container d-flex justify-content-evenly">
+    <div class="container mt-4 p-4 bg-success text-white">
+        <form #creditForm="ngForm" (ngSubmit)="addCredits(creditForm)" class="row g-3">
+
+            <input type="hidden" name="id_client" [(ngModel)]="creditsServices.creditsCreated.id_client">
+            <input type="hidden" name="_id" [(ngModel)]="creditsServices.creditsCreated._id">
+            <input type="hidden" name="customer_ratingscore"
+                [(ngModel)]="creditsServices.creditsCreated.customer_ratingscore">
+            <input type="hidden" name="net_capacityscore"
+                [(ngModel)]="creditsServices.creditsCreated.net_capacityscore">
+            <input type="hidden" name="payment_capacityscore"
+                [(ngModel)]="creditsServices.creditsCreated.payment_capacityscore">
+            <input type="hidden" name="labor_oldscore" [(ngModel)]="creditsServices.creditsCreated.labor_oldscore">
+            <input type="hidden" name="sumof_points" [(ngModel)]="creditsServices.creditsCreated.sumof_points">
+            <input type="hidden" name="payment_capacity" [(ngModel)]="creditsServices.creditsCreated.payment_capacity">
+
+            <label for="">II. Buro de crédito</label>
+            <div class="col-6">
+                <label for="">Precalificación del cliente:</label>
+                <select name="custumer_prequalification" id="" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.custumer_prequalification">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+
+            <div class="col-6">
+                <label for="">Score BC:</label>
+                <input type="text" name="score_Bc" class="form-control"
+                    (input)="evaluarScore(creditsServices.creditsCreated.score_Bc)"
+                    [(ngModel)]="creditsServices.creditsCreated.score_Bc" required>
+            </div>
+
+            <div class="col-4">
+                <label for="">No. de Cuentas abiertas:</label>
+                <input type="text" name="No_openAccounts" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.No_openAccounts" required>
+            </div>
+
+            <div class="col-8">
+                <label for="">Total de deudas mensuales</label>
+                <input type="text" name="total_monthlyDebts" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.total_monthlyDebts" required>
+            </div>
+
+            <div class="col-12">
+                <label for="">Pagos mensuales:</label>
+                <input type="text" name="monthly_payments" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.monthly_payments" required>
+            </div>
+
+            <label for="">III. Información Financiera</label>
+            <div class="form-group col-md-6">
+                <label for="">Ingresos mensuales por su Ocupación Económica</label>
+
+                <div class="">
+                    <label for="">Ingreso Neto Mensual:</label>
+                    <input type="text" name="monthly_netIncome" class="form-control"
+                        (input)="sumaIngresos(creditsServices.creditsCreated.monthly_netIncome)"
+                        [(ngModel)]="creditsServices.creditsCreated.monthly_netIncome" required>
+                </div>
+
+                <div class="">
+                    <label for="">Actividad Adicional:</label>
+                    <input type="text" name="additional_activity" class="form-control"
+                        (input)="sumaIngresos(creditsServices.creditsCreated.additional_activity)"
+                        [(ngModel)]="creditsServices.creditsCreated.additional_activity" required>
+                </div>
+
+                <div class="">
+                    <label for="">Bonos:</label>
+                    <input type="text" name="bonds" class="form-control"
+                        (input)="sumaIngresos(creditsServices.creditsCreated.bonds)"
+                        [(ngModel)]="creditsServices.creditsCreated.bonds" required>
+                </div>
+
+
+                <div class="">
+                    <label for="">Otros:</label>
+                    <input type="text" name="other" class="form-control"
+                        (input)="sumaIngresos(creditsServices.creditsCreated.other)"
+                        [(ngModel)]="creditsServices.creditsCreated.other" required>
+                </div>
+
+                <div class="">
+                    <label for="">Ingresos Cónyuge:</label>
+                    <input type="text" name="spouse_income" class="form-control"
+                        (input)="sumaIngresos(creditsServices.creditsCreated.spouse_income)"
+                        [(ngModel)]="creditsServices.creditsCreated.spouse_income" required>
+                </div>
+
+                <div class="">
+                    <label for="">Ingresos aval:</label>
+                    <input type="text" name="endorsement_income" class="form-control"
+                        (input)="sumaIngresos(creditsServices.creditsCreated.endorsement_income)"
+                        [(ngModel)]="creditsServices.creditsCreated.endorsement_income" required>
+                </div>
+
+                <div class="">
+                    <label for="">Suma Ingresos:</label>
+                    <input type="text" readonly="readonly" id="sumaIngresos" name="add_income" class="form-control"
+                        [(ngModel)]="creditsServices.creditsCreated.add_income" required>
+                </div>
+
+                <div class="">
+                    <label for="">Aforo:</label>
+                    <input type="text" name="capacity" class="form-control" readonly="readonly"
+                        [(ngModel)]="creditsServices.creditsCreated.capacity" required>
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label for="">Gastos mensuales (Casa)</label>
+
+                <div class="">
+                    <label for="">Renta de casa:</label>
+                    <input type="text" name="house_rent" class="form-control"
+                        (input)="sumaEgresos(creditsServices.creditsCreated.house_rent)"
+                        [(ngModel)]="creditsServices.creditsCreated.house_rent" required>
+                </div>
+
+                <div class="">
+                    <label for="">Alimentación:</label>
+                    <input type="text" name="feeding" class="form-control"
+                        (input)="sumaEgresos(creditsServices.creditsCreated.feeding)"
+                        [(ngModel)]="creditsServices.creditsCreated.feeding" required>
+                </div>
+
+                <div class="">
+                    <label for="">Gasolina:</label>
+                    <input type="text" name="gasoline" class="form-control"
+                        (input)="sumaEgresos(creditsServices.creditsCreated.gasoline)"
+                        [(ngModel)]="creditsServices.creditsCreated.gasoline" required>
+                </div>
+
+                <div class="">
+                    <label for="">Servicios:</label>
+                    <input type="text" name="services" class="form-control"
+                        (input)="sumaEgresos(creditsServices.creditsCreated.services)"
+                        [(ngModel)]="creditsServices.creditsCreated.services" required>
+                </div>
+
+                <div class="">
+                    <label for="">Otros:</label>
+                    <input type="text" name="Other" class="form-control"
+                        (input)="sumaEgresos(creditsServices.creditsCreated.Other)"
+                        [(ngModel)]="creditsServices.creditsCreated.Other" required>
+                </div>
+
+                <div class="">
+                    <label for="">Suma de egresos:</label>
+                    <input type="text" name="sum_ofExpenses" class="form-control" readonly="readonly"
+                        [(ngModel)]="creditsServices.creditsCreated.sum_ofExpenses" required>
+                </div>
+
+            </div>
+
+            
+            <label for="">IV. Información de persona fisica con actividad empresarial</label>
+            
+            <div class="form-group col-md-3">   
+                <label for="" class="mb-4">Estados de cuenta</label>
+                <div class="">
+                    <label for="">Mes:</label>
+                    <select name="Mouth" id="" class="form-control">
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="" >Mes:</label>
+                    <select name="Mouth" id="" class="form-control">
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="">Mes:</label>
+                    <select name="Mouth" id="" class="form-control">
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">   
+                <div class="">
+                    <label for="">Banco:</label>
+                    <select name="Bank" id="" class="form-control">
+                    <option value="Bancomer">Bancomer</option>
+                    <option value="Banamex">Banamex</option>
+                    <option value="Banorte">Banorte</option>
+                    <option value="HSBC">HSBC</option>
+                    <option value="Santander">Santander</option>
+                    <option value="Scotiabank">Scotiabank</option>
+                    <option value="Banregio">Banregio</option>
+                    <option value="BanBajio">BanBajio</option>
+                    <option value="Banjército">Banjército</option>
+                    <option value="BanCoppel">BanCoppel</option>
+                    <option value="Banco Azteca">Banco Azteca</option>
+                    <option value="Banco Afirme">Banco Afirme</option>
+                    <option value="Intercam">Intercam</option>
+                    <option value="CiBanco">CiBanco</option>
+                    <option value="Otros">Otros</option>
+                </select>
+                </div>
+                <div class="">
+                    <label for="">Depositos:</label>
+                    <input type="text" name="Deposits" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Depositos:</label>
+                    <input type="text" name="Deposits" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Depositos:</label>
+                    <input type="text" name="Deposits" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">    
+                <div class="">
+                    <label for="">Moneda:</label>
+                    <select name="coin" id="" class="form-control">
+                        <option value="Pesos">Pesos</option>
+                        <option value="Dolares">Dolares</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="">Retiros:</label>
+                    <input type="text" name="CashOut" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Retiros:</label>
+                    <input type="text" name="CashOut" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Retiros:</label>
+                    <input type="text" name="CashOut" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <div class="">
+                    <label for="">Cuenta:</label>
+                    <input type="text" name="account" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Saldo Final:</label>
+                    <input type="text" name="final_balance" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Saldo Final:</label>
+                    <input type="text" name="final_balance" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Saldo Final:</label>
+                    <input type="text" name="final_balance" class="form-control">
+                </div>
+            </div>
+            <div class="form-group col-md-3">   
+                <label for="" class="mb-4">Estados de cuenta</label>
+                <div class="">
+                    <label for="">Mes:</label>
+                    <select name="Mouth" id="" class="form-control">
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="" >Mes:</label>
+                    <select name="Mouth" id="" class="form-control">
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="">Mes:</label>
+                    <select name="Mouth" id="" class="form-control">
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                        <option value="Julio">Julio</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Septiembre">Septiembre</option>
+                        <option value="Octubre">Octubre</option>
+                        <option value="Noviembre">Noviembre</option>
+                        <option value="Diciembre">Diciembre</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">   
+                <div class="">
+                    <label for="">Banco:</label>
+                    <select name="Bank" id="" class="form-control">
+                    <option value="Bancomer">Bancomer</option>
+                    <option value="Banamex">Banamex</option>
+                    <option value="Banorte">Banorte</option>
+                    <option value="HSBC">HSBC</option>
+                    <option value="Santander">Santander</option>
+                    <option value="Scotiabank">Scotiabank</option>
+                    <option value="Banregio">Banregio</option>
+                    <option value="BanBajio">BanBajio</option>
+                    <option value="Banjército">Banjército</option>
+                    <option value="BanCoppel">BanCoppel</option>
+                    <option value="Banco Azteca">Banco Azteca</option>
+                    <option value="Banco Afirme">Banco Afirme</option>
+                    <option value="Intercam">Intercam</option>
+                    <option value="CiBanco">CiBanco</option>
+                    <option value="Otros">Otros</option>
+                </select>
+                </div>
+                <div class="">
+                    <label for="">Depositos:</label>
+                    <input type="text" name="Deposits" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Depositos:</label>
+                    <input type="text" name="Deposits" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Depositos:</label>
+                    <input type="text" name="Deposits" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">    
+                <div class="">
+                    <label for="">Moneda:</label>
+                    <select name="coin" id="" class="form-control">
+                        <option value="Pesos">Pesos</option>
+                        <option value="Dolares">Dolares</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="">Retiros:</label>
+                    <input type="text" name="CashOut" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Retiros:</label>
+                    <input type="text" name="CashOut" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Retiros:</label>
+                    <input type="text" name="CashOut" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <div class="">
+                    <label for="">Cuenta:</label>
+                    <input type="text" name="account" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Saldo Final:</label>
+                    <input type="text" name="final_balance" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Saldo Final:</label>
+                    <input type="text" name="final_balance" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Saldo Final:</label>
+                    <input type="text" name="final_balance" class="form-control">
+                </div>
+            </div>
+            <label for="">Información del Fiscal</label>
+            <div class="form-group col-md-4">
+                <div class="">
+                    <label for="">Activos totales:</label>
+                    <input type="text" name="total_assets" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Activo Circulante:</label>
+                    <input type="text" name="current_assets" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Inventario:</label>
+                    <input type="text" name="Inventory" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Pasivos totales:</label>
+                    <input type="text" name="total_liabilities" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Pasivos circulante:</label>
+                    <input type="text" name="current_liabilities" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <div class="">
+                    <label for="">Capital contable:</label>
+                    <input type="text" name="book_capital" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Ventas:</label>
+                    <input type="text" name="sales" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Utilidad:</label>
+                    <input type="text" name="Utility" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">intereses por pagar:</label>
+                    <input type="text" name="interest_payable" class="form-control">
+                </div>
+                <div class="">
+                    <label for="">Interes anual Finbaja:</label>
+                    <input type="text" name="Finbaja_Annual_Interest" class="form-control">
+                </div>
+            </div>
+           
+            <div class="form-group col-md-4">
+                <div class="">
+                    <label for="">No. meses del resultado</label>
+                    <input type="text" name="No_months_of_the_result" class="form-control">                    
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div class="col-12">
+                        <label for="">Apalancamiento interno:</label>
+                        <input type="text" name="Internal_leverage" class="form-control">
+                        <label for="Internal_leverage" class="text-black">Del capital, hay 1.00 comprometido con deuda</label>
+                    </div>
+                    <div class="col-12">
+                        <label for="">Prueba acida:</label>
+                        <input type="text" name="Acid_Test" class="form-control">
+                        <label for="Acid_Test" class="text-black">Veces se paga la deuda con los activos circulantes</label>
+                    </div>
+                    <div class="col-12">
+                        <label for="">Apalancamiento externo:</label>
+                        <input type="text" name="External_leverage" class="form-control">
+                        <label for="External_leverage" class="text-black">Veces apalancada, con capital externo</label>
+                    </div>
+                    <div class="col-12">
+                        <label for="">Cobertura de interes:</label>
+                        <input type="text" name="Interest_coverage" class="form-control">
+                        <label for="Interest_coverage" class="text-black">Veces puede pagar intereses</label>
+                    </div>
+                </div>
+            </div>
+           
+
+            <label for="">V. Información del Financiamiento</label>
+
+            <div class="col-4">
+                <label for="">Marca:</label>
+                <select name="brand" id="" class="form-control" [(ngModel)]="creditsServices.creditsCreated.brand">
+                    <option value="Otros">Otros</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Camiones Usados">Camiones Usados</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Ford">Ford</option>
+                    <option value="GMC">GMC</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Mercedes Benz">Mercedes Benz</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label for="">Modelo:</label>
+                <input type="text" name="model" class="form-control" [(ngModel)]="creditsServices.creditsCreated.model"
+                    required>
+            </div>
+
+            <div class="col-4">
+                <label for="">Enganche:</label>
+                <input type="text" name="hitch" class="form-control" (input)="calcularPrecio()"
+                    [(ngModel)]="creditsServices.creditsCreated.hitch" required>
+            </div>
+
+            <div class="col-4">
+                <label for="">Precio:</label>
+                <input type="text" name="price" class="form-control" readonly="readonly"
+                    [(ngModel)]="creditsServices.creditsCreated.price" required>
+            </div>
+
+            <div class="col-4">
+                <label for="">Financiamiento:</label>
+                <input type="text" name="financing" class="form-control" readonly="readonly"
+                    [(ngModel)]="creditsServices.creditsCreated.financing" required>
+            </div>
+
+            <div class="col-4">
+                <label for="">Mensualidad:</label>
+                <input type="text" name="mounthly_payment" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.mounthly_payment" required>
+            </div>
+
+            <div class="col-4">
+                <label for="">Valor Factura:</label>
+                <input type="text" name="invoice_value" class="form-control" (input)="calcularPrecio()"
+                    [(ngModel)]="creditsServices.creditsCreated.invoice_value" required>
+            </div>
+
+            <div class="col-4">
+                <label for="">Monto Financiar Total:</label>
+                <input type="text" name="total_financingAmount" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.total_financingAmount" required>
+            </div>
+
+            <div class="col-3">
+                <label for="">Plazo Meses:</label>
+                <input type="text" name="termM" class="form-control" [(ngModel)]="creditsServices.creditsCreated.termM"
+                    required>
+            </div>
+
+            <div class="col-5">
+                <label for="">Anualidad:</label>
+                <input type="text" name="annuity" class="form-control"
+                    [(ngModel)]="creditsServices.creditsCreated.annuity" required>
+            </div>
+
+            <div class="d-grid  col-2">
+                <button id="btnSave" class=" btn btn-primary">Guardar</button>
+            </div>
+
+        </form>
+        <div class="slide_options d-flex justify-content-evenly m-3">
+            <div class="d-grid gap-2 col-3">
+                <button mat-raised-button class=" btn btn-danger" (click)="openFormResult()">ver resultado</button>
+            </div>
+            <div class="d-grid gap-2 col-3">
+                <button class=" btn btn-danger">Exportar</button>
+            </div>
+            <div class="d-grid gap-2 col-3">
+                <button class=" btn btn-warning ">Limpiar</button>
+            </div>
+        </div>
+    </div>
+</div>

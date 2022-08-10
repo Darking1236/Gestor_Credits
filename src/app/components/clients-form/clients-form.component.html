@@ -1,0 +1,113 @@
+<div class="container mt-4 p-4 bg-success text-white">   
+    <form #clientsForm="ngForm" (ngSubmit)="addClients(clientsForm)" class="row g-3" >
+        
+        <input type="hidden" name="_id" [(ngModel)]="clientsServices.clientAdded._id">
+        
+        <div class="col-12">
+            <label for="">Nombre Completo:</label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="clientsServices.clientAdded.name" required>
+        </div>
+        
+        <div class="col-2">
+            <label for="">Edad:</label>
+            <input type="text" name="age" class="form-control"  [(ngModel)]="clientsServices.clientAdded.age" required>
+        </div>
+
+        <div class="col-5">
+            <label for="">Estado:</label>
+            <select name="status" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.status" >
+                <option value="Pendiente">Pendiente</option>
+                <option value="En Proceso">En Proceso</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+        </div>
+        
+        <div class="col-5">
+            <label for="">Persona Fisica/Moral:</label>
+            <select name="person" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.person" >
+                <option value="Persona Fisica">Persona Fisica</option>
+                <option value="Persona Moral">Persona Moral</option>
+            </select>
+        </div>
+        
+        <div class="col-5">
+            <label for="">Antiguedad Laboral:</label>
+            <select name="labor_Old" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.labor_Old" >
+                <option value="(+)36 M">(+)36 M</option>
+                <option value="24-35 M">24-35 M</option>
+                <option value="12-23 M">12-23 M</option>
+                <option value="6-11 M">6-11 M</option>
+            </select>
+        </div>
+        
+        <div class="col-4">
+            <label for="">Antiguedad en domicilio:</label>
+            <input type="text" name="seniority_At_Home" class="form-control"  [(ngModel)]="clientsServices.clientAdded.seniority_At_Home" required>
+        </div>
+        
+        <div class="col-3">
+            <label for="">Casa propia:</label>
+            <select name="own_House" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.own_House"  >
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        
+        <div class="col-3">
+            <label for="">Telefono Fijo:</label>
+            <select name="land_Line" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.land_Line" >   
+                <option value="Si" >Si</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        
+        <div class="col-3">
+            <label for="">Comprobante vigente:</label>
+            <select name="voucher_Valid" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.voucher_Valid" >
+                <option value="Si" >Si</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        
+        <div class="col-3">
+            <label for="">Estado Civil:</label>
+            <select name="marital_Status" id="" class="form-control"  [(ngModel)]="clientsServices.clientAdded.marital_Status" >
+                <option value="Soltero" >Soltero</option>
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="Viudo">Viudo</option>
+                <option value="UnionL.">Union L.</option>
+            </select>
+        </div>
+
+        <div class="col-3">
+            <label for="">No. Dependientes:</label>
+            <input type="text" name="no_of_Dependents" class="form-control"  [(ngModel)]="clientsServices.clientAdded.no_of_Dependents">
+        </div>
+
+        <div class="col-12">
+            <label for="">Originario de:</label>
+            <input type="text" name="from" class="form-control"  [(ngModel)]="clientsServices.clientAdded.from" >
+        </div>
+
+        <div class="col-12">
+            <label for="">Puesto:</label>
+            <input type="text" name="position" class="form-control"  [(ngModel)]="clientsServices.clientAdded.position" >
+        </div>    
+
+        <div class="col-12">
+            <label for="">Nombre comercial:</label>
+            <input type="text" name="trade_Name" class="form-control"  [(ngModel)]="clientsServices.clientAdded.trade_Name">
+        </div>
+
+        <div class="d-grid gap-2 col-8">
+            <button id="btnSave" class=" btn btn-primary ">GUARDAR</button>
+        </div>
+        <div class="d-grid gap-2 col-2">
+            <button class=" btn btn-danger ">CANCELAR</button>
+        </div>
+        <div class="d-grid gap-2 col-2">
+            <button class=" btn btn-warning ">LIMPIAR</button>
+        </div>
+    </form>
+</div>
